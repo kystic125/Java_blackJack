@@ -1,0 +1,19 @@
+package java_BlackJack.domain;
+
+public enum Shape {
+
+    SPADE("스페이드"),
+    HEART("하트"),
+    CLOVER("클로버"),
+    DIAMOND("다이아몬드");
+
+    private final String shape;
+
+    Shape(String shape) {
+        this.shape = shape;
+    }
+
+    public String getShape() {
+        return shape;
+    }
+}
