@@ -13,14 +13,13 @@ public class Hand {
     }
 
     public int calculateScore() {
-        int aceCount = 0;
-        int totalScore = 0;
-        for (Card card : cards) {
-            totalScore += card.getScore();
-            if (card.getRank().equals("ACE")) {
-                aceCount ++;
-            }
-        }
+        int totalScore = cards.stream()
+                .mapToInt(Card::getScore)
+                .sum();
+
+        int aceCount = (int) cards.stream()
+                .filter(Card::isAce)
+                .count();
 
         while (totalScore > 21 && aceCount >= 1) {
             totalScore -= 10;
@@ -30,7 +29,7 @@ public class Hand {
         return totalScore;
     }
 
-    public List<Card> openCards() {
+    public List<Card> openPlayerCards() {
         return Collections.unmodifiableList(cards);
     }
 

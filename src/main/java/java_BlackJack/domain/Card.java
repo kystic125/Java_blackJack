@@ -9,12 +9,16 @@ public class Card {
         this.rank = rank;
     }
 
-    public String getRank() {
-        return rank.getRank();
+    public Rank getRank() {
+        return rank;
     }
 
     public int getScore() {
         return rank.getValue();
+    }
+
+    public boolean isAce() {
+        return rank == Rank.ACE;
     }
 
     @Override
