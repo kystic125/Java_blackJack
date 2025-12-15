@@ -18,10 +18,6 @@ public class Player {
         hand.addCard(card);
     }
 
-    public List<Card> openCards() {
-        return hand.getCards();
-    }
-
     public String getName() {
         return name;
     }
@@ -30,7 +26,19 @@ public class Player {
         return bettingMoney;
     }
 
-    public Hand getHand() {
-        return hand;
+    public List<Card> getCards() {
+        return hand.getCards();
+    }
+
+    public int getScore() {
+        return hand.getScore();
+    }
+
+    public boolean isBurst() {
+        return hand.isBurst();
+    }
+
+    public boolean isBlackJack() {
+        return hand.isBlackJack();
     }
 }
