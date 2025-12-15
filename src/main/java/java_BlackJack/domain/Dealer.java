@@ -12,24 +12,23 @@ public class Dealer {
         this.deck = deck;
     }
 
-    public void deal(Player player) {
-        player.receiveCard(deck.drawCard());
+    public Card drawCard() {
+        return deck.drawCard();
     }
 
-    public void drawCard() {
+    public void hit() {
         hand.addCard(deck.drawCard());
     }
 
-    public List<Card> openCards() {
-        List<Card> cards = hand.getCards();
-        return cards.subList(1, cards.size());
+    public boolean shouldHit() {
+        return hand.getScore() <= 16;
     }
 
-    public boolean shouldHit(int score) {
-        return score <= 16;
+    public List<Card> getCards() {
+        return hand.getCards();
     }
 
-    public Hand getHand() {
-        return hand;
+    public int getScore() {
+        return hand.getScore();
     }
 }
