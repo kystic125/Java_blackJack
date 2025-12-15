@@ -10,6 +10,8 @@ public class Deck {
     public Deck() {
         this.cards = createCards();
         Collections.shuffle(cards);
+
+
     }
 
     private List<Card> createCards() {
