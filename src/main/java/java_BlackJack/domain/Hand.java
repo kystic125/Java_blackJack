@@ -21,7 +21,7 @@ public class Hand {
                 .mapToInt(Card::getScore)
                 .sum();
 
-        int aceCount = (int) cards.stream()  // cards 그대로 써
+        int aceCount = (int) cards.stream()
                 .filter(Card::isAce)
                 .count();
 
@@ -37,10 +37,10 @@ public class Hand {
     }
 
     public boolean isBurst() {
-        return getScore() > 21;  // getScore() 호출
+        return getScore() > 21;
     }
 
     public boolean isBlackJack() {
-        return getScore() == 21 && cards.size() == 2;  // getScore()와 cards.size()
+        return getScore() == 21 && cards.size() == 2;
     }
 }
