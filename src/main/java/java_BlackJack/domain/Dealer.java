@@ -31,4 +31,12 @@ public class Dealer {
     public int getScore() {
         return hand.getScore();
     }
+
+    public boolean isBurst() {
+        return hand.isBurst();
+    }
+
+    public boolean isBlackJack() {
+        return hand.isBlackJack();
+    }
 }
