@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Hand {
-    
+
     private final List<Card> cards = new ArrayList<>();
 
     public void addCard(Card card) {
@@ -16,7 +16,31 @@ public class Hand {
         return Collections.unmodifiableList(cards);
     }
 
-    public int getCardCount() {
-        return cards.size();
+    public int getScore() {
+        int total = cards.stream()
+                .mapToInt(Card::getScore)
+                .sum();
+
+        int aceCount = (int) cards.stream()  // cards 그대로 써
+                .filter(Card::isAce)
+                .count();
+
+        return adjustAce(total, aceCount);
+    }
+
+    private int adjustAce(int score, int aceCount) {
+        while (score > 21 && aceCount > 0) {
+            score -= 10;
+            aceCount--;
+        }
+        return score;
+    }
+
+    public boolean isBurst() {
+        return getScore() > 21;  // getScore() 호출
+    }
+
+    public boolean isBlackJack() {
+        return getScore() == 21 && cards.size() == 2;  // getScore()와 cards.size()
     }
 }
