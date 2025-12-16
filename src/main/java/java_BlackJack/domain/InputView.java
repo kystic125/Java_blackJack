@@ -8,7 +8,27 @@ public class InputView {
 
     public String[] getPlayerNames() {
         System.out.println("게임에 참여할 사람의 이름을 입력하세요.(쉼표 기준으로 분리)");
-        return scanner.nextLine().split(",");
+        while (true) {
+            try {
+                String players = scanner.nextLine().trim();
+                validatePlayers(players);
+                return players.split(",", -1);
+            } catch (IllegalStateException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    private void validatePlayers(String players) {
+        if (players.isEmpty()) {
+            throw new IllegalStateException("[ERROR] 플레이어 이름은 비어 있을 수 없습니다.");
+        }
+
+        for (String player : players.split(",", -1)) {
+            if (player.trim().isEmpty()) {
+                throw new IllegalStateException("[ERROR] 플레이어 이름을 다시 입력해주세요");
+            }
+        }
     }
 
     public int getBettingAmount(String player) {
