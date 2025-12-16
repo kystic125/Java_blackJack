@@ -12,6 +12,11 @@ public class Dealer {
         this.deck = deck;
     }
 
+    public Dealer(Deck deck, Hand hand) {
+        this.hand = hand;
+        this.deck = deck;
+    }
+
     public Card drawCard() {
         return deck.drawCard();
     }
